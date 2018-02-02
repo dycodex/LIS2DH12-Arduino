@@ -346,3 +346,30 @@ int LIS2DH12_Read_Who_Am_I(void* handle, uint8_t *ID) {
 
     return 1;
 }
+
+int LIS2DH12_Write_Temp(void* handle, LIS2DH12_Temp_t temp) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_TEMP_CFG_REG, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_TEMP_MASK;
+    value |= (uint8_t)temp;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_TEMP_CFG_REG, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Read_Temp(void* handle, int16_t *temperature) {
+    uint8_t values[2];
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_OUT_TEMP_L, values, 2)) {
+        return 0;
+    }
+
+    *temperature = (int16_t)values[0] | ((int16_t)values[1] << 8);
+
+    return 1;
+}

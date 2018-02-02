@@ -37,6 +37,9 @@ public:
     LIS2DH12StatusType getRawAxes(int16_t *axes);
     LIS2DH12StatusType getAxes(int16_t *axes);
     LIS2DH12StatusType readID(uint8_t *ID);
+    LIS2DH12StatusType enableTemperature();
+    LIS2DH12StatusType disableTemperature();
+    LIS2DH12StatusType readTemperature(int16_t *temperature);
 
     uint8_t read(uint8_t *buffer, uint8_t registerAddr, uint16_t length) {
         int i = 0;

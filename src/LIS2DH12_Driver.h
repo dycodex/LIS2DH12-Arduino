@@ -11,7 +11,9 @@ extern "C" {
 #define LIS2DH12_I2C_ADDRESS 0x18
 
 // Register Addresses
+#define LIS2DH12_REG_OUT_TEMP_L 0x0C
 #define LIS2DH12_REG_WHO_AM_I 0x0F
+#define LIS2DH12_REG_TEMP_CFG_REG 0x1F
 #define LIS2DH12_REG_CTRL_REG1 0x20
 #define LIS2DH12_REG_CTRL_REG2 0x21
 #define LIS2DH12_REG_CTRL_REG3 0x22
@@ -187,6 +189,17 @@ typedef enum {
 int LIS2DH12_Write_INT1_XLIE(void* handle, LIS2DH12_INT1_XLIE_t XLIE);
 
 int LIS2DH12_Read_Who_Am_I(void* handle, uint8_t *ID);
+
+typedef enum {
+    LIS2DH12_TEMP_ENABLE = 0xC0,
+    LIS2DH12_TEMP_DISABLE = 0x00,
+} LIS2DH12_Temp_t;
+
+#define LIS2DH12_TEMP_MASK 0xC0
+
+int LIS2DH12_Write_Temp(void* handle, LIS2DH12_Temp_t temp);
+
+int LIS2DH12_Read_Temp(void* handle, int16_t *temperature);
 
 #ifdef __cplusplus
 }

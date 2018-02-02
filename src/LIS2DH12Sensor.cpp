@@ -222,6 +222,30 @@ LIS2DH12StatusType LIS2DH12Sensor::readID(uint8_t* ID) {
     return LIS2DH12_STATUS_OK;
 }
 
+LIS2DH12StatusType LIS2DH12Sensor::enableTemperature() {
+    if (!LIS2DH12_Write_Temp((void*)this, LIS2DH12_TEMP_ENABLE)) {
+        return LIS2DH12_STATUS_ERROR;
+    }
+
+    return LIS2DH12_STATUS_OK;
+}
+
+LIS2DH12StatusType LIS2DH12Sensor::disableTemperature() {
+    if (!LIS2DH12_Write_Temp((void*)this, LIS2DH12_TEMP_DISABLE)) {
+        return LIS2DH12_STATUS_ERROR;
+    }
+
+    return LIS2DH12_STATUS_OK;
+}
+
+LIS2DH12StatusType LIS2DH12Sensor::readTemperature(int16_t *temperature) {
+    if (!LIS2DH12_Read_Temp((void*)this, temperature)) {
+        return LIS2DH12_STATUS_ERROR;
+    }
+
+    return LIS2DH12_STATUS_OK;
+}
+
 uint8_t LIS2DH12_IO_Write(void *handle, uint8_t address, uint8_t *buffer, uint16_t length) {
     return ((LIS2DH12Sensor*)handle)->write(buffer, address, length);
 }
