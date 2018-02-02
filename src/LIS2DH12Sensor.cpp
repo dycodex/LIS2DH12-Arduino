@@ -214,6 +214,14 @@ LIS2DH12StatusType LIS2DH12Sensor::getAxes(int16_t *axes) {
     return LIS2DH12_STATUS_OK;
 }
 
+LIS2DH12StatusType LIS2DH12Sensor::readID(uint8_t* ID) {
+    if (!LIS2DH12_Read_Who_Am_I((void*)this, ID)) {
+        return LIS2DH12_STATUS_ERROR;
+    }
+
+    return LIS2DH12_STATUS_OK;
+}
+
 uint8_t LIS2DH12_IO_Write(void *handle, uint8_t address, uint8_t *buffer, uint16_t length) {
     return ((LIS2DH12Sensor*)handle)->write(buffer, address, length);
 }

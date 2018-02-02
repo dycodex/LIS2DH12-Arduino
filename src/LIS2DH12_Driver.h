@@ -11,6 +11,7 @@ extern "C" {
 #define LIS2DH12_I2C_ADDRESS 0x18
 
 // Register Addresses
+#define LIS2DH12_REG_WHO_AM_I 0x0F
 #define LIS2DH12_REG_CTRL_REG1 0x20
 #define LIS2DH12_REG_CTRL_REG2 0x21
 #define LIS2DH12_REG_CTRL_REG3 0x22
@@ -184,6 +185,8 @@ typedef enum {
 #define LIS2DH12_INT1_XLIE_MASK 0x01
 
 int LIS2DH12_Write_INT1_XLIE(void* handle, LIS2DH12_INT1_XLIE_t XLIE);
+
+int LIS2DH12_Read_Who_Am_I(void* handle, uint8_t *ID);
 
 #ifdef __cplusplus
 }

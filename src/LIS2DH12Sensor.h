@@ -36,6 +36,7 @@ public:
     LIS2DH12StatusType getFullScale(LIS2DH12_FS_t *fullScale);
     LIS2DH12StatusType getRawAxes(int16_t *axes);
     LIS2DH12StatusType getAxes(int16_t *axes);
+    LIS2DH12StatusType readID(uint8_t *ID);
 
     uint8_t read(uint8_t *buffer, uint8_t registerAddr, uint16_t length) {
         int i = 0;

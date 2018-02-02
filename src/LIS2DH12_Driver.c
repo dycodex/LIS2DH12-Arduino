@@ -338,3 +338,11 @@ int LIS2DH12_Write_INT1_XLIE(void* handle, LIS2DH12_INT1_XLIE_t XLIE) {
 
     return 1;
 }
+
+int LIS2DH12_Read_Who_Am_I(void* handle, uint8_t *ID) {
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_WHO_AM_I, ID, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
