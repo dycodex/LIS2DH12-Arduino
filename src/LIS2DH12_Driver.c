@@ -153,3 +153,188 @@ int LIS2DH12_Read_Axes_Raw(void *handle, int16_t *axes) {
 
     return 1;
 }
+
+int LIS2DH12_Write_LIR_I1(void *handle, LIS2DH12_LatchInterrupt_I1_t latch) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_CTRL_REG5, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_LIR_I1_MASK;
+    value |= (uint8_t)latch;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_CTRL_REG5, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_IA_I1(void* handle, LIS2DH12_IA_I1_t IA) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_CTRL_REG3, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_IA_I1_MASK;
+    value |= (uint8_t)IA;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_CTRL_REG3, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_INT1_AOI(void* handle, LIS2DH12_INT1_AOI_t AOI) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_INT1_AOI_MASK;
+    value |= (uint8_t)AOI;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_INT1_ZHIE(void* handle, LIS2DH12_INT1_ZHIE_t ZHIE) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_INT1_ZHIE_MASK;
+    value |= (uint8_t)ZHIE;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_INT1_YHIE(void* handle, LIS2DH12_INT1_YHIE_t YHIE) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_INT1_YHIE_MASK;
+    value |= (uint8_t)YHIE;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_INT1_XHIE(void* handle, LIS2DH12_INT1_XHIE_t XHIE) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_INT1_XHIE_MASK;
+    value |= (uint8_t)XHIE;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_INT1_6D(void* handle, LIS2DH12_INT1_6D_t sixD) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_INT1_6D_MASK;
+    value |= (uint8_t)sixD;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_INT1_THS(void* handle, uint8_t threshold) {
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_THS, &threshold, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_INT1_DURATION(void* handle, uint8_t duration) {
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_DURATION, &duration, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Read_INT1_SRC(void* handle, uint8_t *source) {
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_INT1_SRC, source, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+
+int LIS2DH12_Write_INT1_ZLIE(void* handle, LIS2DH12_INT1_ZLIE_t ZLIE) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_INT1_ZLIE_MASK;
+    value |= (uint8_t)ZLIE;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_INT1_YLIE(void* handle, LIS2DH12_INT1_YLIE_t YLIE) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_INT1_YLIE_MASK;
+    value |= (uint8_t)YLIE;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
+
+int LIS2DH12_Write_INT1_XLIE(void* handle, LIS2DH12_INT1_XLIE_t XLIE) {
+    uint8_t value;
+    if (!LIS2DH12_ReadRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    value &= ~LIS2DH12_INT1_XLIE_MASK;
+    value |= (uint8_t)XLIE;
+
+    if (!LIS2DH12_WriteRegister(handle, LIS2DH12_REG_INT1_CFG, &value, 1)) {
+        return 0;
+    }
+
+    return 1;
+}
